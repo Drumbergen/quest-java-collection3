@@ -14,14 +14,25 @@ public class Thanos {
         heroes.add(new Hero("Doctor Strange", 42));
 
         // TODO 1 : Retrieve and remove the oldest hero in one line
-        Hero oldest = null;
+        
+        // Hero oldest = null;
+        Hero oldest = heroes.pollLast();
 
         System.out.println("\nOldest hero:");
         System.out.println(oldest == null ? "" : oldest.getName());
 
+        /*   
+        // Test     
+        Hero oldest2 = heroes.pollLast();
+        Hero oldest3 = heroes.pollFirst();
+        System.out.println(oldest2 == null ? "" : oldest2.getName());
+        System.out.println(oldest3 == null ? "" : oldest3.getName());
+        */
+
+
         // TODO 2: Show heroes by age (descending)
         System.out.println("\nHeroes by age (descending) :");
-        for (Hero hero : heroes) {
+        for (Hero hero : heroes.descendingSet()) {
             System.out.println(hero.getName() + ", " + hero.getAge());
         }
 
@@ -32,7 +43,7 @@ public class Thanos {
         heroes.add(ironman);
 
         System.out.println("\nSubset of heroes :");
-        for (Hero hero : heroes) {
+        for (Hero hero : heroes.subSet(spiderman, true, ironman, true)) {
             System.out.println(hero.getName() + ", " + hero.getAge());
         }
     }
